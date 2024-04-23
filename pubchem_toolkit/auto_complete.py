@@ -2,6 +2,7 @@
 
 import requests
 
+
 def autocomplete_search(query, dictionary, limit=10):
     """
     Perform auto-complete search using PubChem REST auto-complete API.
@@ -14,15 +15,19 @@ def autocomplete_search(query, dictionary, limit=10):
     Returns:
         list: List of suggested terms matching the query.
     """
-    base_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/autocomplete/{dictionary}/{query}/json"
-    params = {'limit': limit}
+    base_url = (
+        f"https://pubchem.ncbi.nlm.nih.gov/rest/autocomplete/{dictionary}/{query}/json"
+    )
+    params = {"limit": limit}
 
     response = requests.get(base_url, params=params)
     if response.status_code == 200:
         data = response.json()
-        if 'dictionary_terms' in data:
-            return data['dictionary_terms'][dictionary]
+        if "dictionary_terms" in data:
+            return data["dictionary_terms"][dictionary]
         else:
             return []
     else:
-        raise Exception("Failed to perform auto-complete search. Check your query and try again.")
+        raise Exception(
+            "Failed to perform auto-complete search. Check your query and try again."
+        )

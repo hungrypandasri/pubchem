@@ -1,7 +1,7 @@
 # File: tests/test_autocomplete.py
 
 import unittest
-from pubchem_toolkit.auto_complete import autocomplete_search # type: ignore 
+from pubchem_toolkit.auto_complete import autocomplete_search  # type: ignore
 
 
 class TestAutocomplete(unittest.TestCase):
@@ -22,8 +22,11 @@ class TestAutocomplete(unittest.TestCase):
 
     def test_invalid_autocomplete(self):
         # Test auto-complete search with invalid query
-        invalid_result = autocomplete_search("nonexistentquery", dictionary="compound", limit=10)
+        invalid_result = autocomplete_search(
+            "nonexistentquery", dictionary="compound", limit=10
+        )
         self.assertEqual(invalid_result, [])
+
 
 if __name__ == "__main__":
     unittest.main()

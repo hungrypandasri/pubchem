@@ -14,5 +14,6 @@ class TestCompoundSearch(unittest.TestCase):
         with self.assertRaises(Exception):
             get_compound_properties("nonexistentcompound")
 
+
 if __name__ == "__main__":
     unittest.main()
